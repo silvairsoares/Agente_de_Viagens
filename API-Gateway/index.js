@@ -13,6 +13,7 @@ const hoteisServiceProxy = httpProxy('http://localhost:3003');
 const pagamentosServiceProxy = httpProxy('http://localhost:3004');
 const viagensServiceProxy = httpProxy('http://localhost:3005');
 const voosServiceProxy = httpProxy('http://localhost:3006');
+var router = express.Router();
 
 //#region Métodos da API Carros
 // Retorna todos os carros
@@ -49,20 +50,6 @@ app.get('/hoteis', (req, res, next) => {
   hoteisServiceProxy(req, res, next);
 })
 
-// Retorna um cliente específico
-app.get('/clientes/:id', (req, res, next) => {
-  clientesServiceProxy(req, res, next);
-})
-
-// Cadastra um novo cliente
-router.post('/clientes', (req, res, next) => {
-  clientesServiceProxy(req, res, next);
-})
-
-// Atualiza um novo cliente
-router.put('/clientes', (req, res, next) => {
-  clientesServiceProxy(req, res, next);
-})
 //#endregion
 
 //#region Métodos da API Pagamentos
