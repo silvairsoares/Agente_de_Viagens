@@ -1,0 +1,61 @@
+{
+	"services": [
+		{
+			"name": "API-Gateway",
+			"tags": [
+				"node.js"
+			],
+			"address": "http://localhost/",
+			"port": 3000
+		},
+		{
+			"name": "API-Carros",
+			"tags": [
+				"node.js"
+			],
+			"address": "http://localhost/",
+			"port": 3001
+		},
+		{
+			"name": "API-Clientes",
+			"tags": [
+				"node.js"
+			],
+			"address": "http://localhost/",
+			"port": 3002
+		}
+		,
+		{
+			"name": "API-Hoteis",
+			"tags": [
+				"node.js"
+			],
+			"address": "http://localhost/",
+			"port": 3003
+		},
+		{
+			"name": "API-Pagamentos",
+			"tags": [
+				"node.js"
+			],
+			"address": "http://localhost/",
+			"port": 3004
+		},
+		{
+			"name": "API-Viagens",
+			"tags": [
+				"node.js"
+			],
+			"address": "http://localhost/",
+			"port": 3005
+		},
+		{
+			"name": "API-Voos",
+			"tags": [
+				"node.js"
+			],
+			"address": "http://localhost/",
+			"port": 3006
+		}
+	]
+}
