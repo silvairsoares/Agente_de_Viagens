@@ -1,8 +1,8 @@
 //index.js
+
 var http = require('http');
 const express = require('express')
 const httpProxy = require('express-http-proxy')
-const app = express()
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const helmet = require('helmet');
@@ -17,19 +17,19 @@ var router = express.Router();
 
 //#region Métodos da API Carros
 // Retorna todos os carros
-app.get('/carros', (req, res, next) => {
+router.get('/carros', (req, res, next) => {
   carrosServiceProxy(req, res, next);
 })
 //#endregion
 
 //#region Métodos da API Clientes
 // Retorna todos os clientes
-app.get('/clientes', (req, res, next) => {
+router.get('/clientes', (req, res, next) => {
   clientesServiceProxy(req, res, next);
 })
 
 // Retorna um cliente específico
-app.get('/clientes/:id', (req, res, next) => {
+router.get('/clientes/:id', (req, res, next) => {
   clientesServiceProxy(req, res, next);
 })
 
@@ -46,7 +46,7 @@ router.put('/clientes/:id', (req, res, next) => {
 
 //#region Métodos da API Hoteis
 // Retorna todos os hoteis
-app.get('/hoteis', (req, res, next) => {
+router.get('/hoteis', (req, res, next) => {
   hoteisServiceProxy(req, res, next);
 })
 
@@ -54,12 +54,12 @@ app.get('/hoteis', (req, res, next) => {
 
 //#region Métodos da API Pagamentos
 // Retorna todos os pagamentos
-app.get('/pagamentos', (req, res, next) => {
+router.get('/pagamentos', (req, res, next) => {
   pagamentosServiceProxy(req, res, next);
 })
 
 // Retorna um pagamentos específico
-app.get('/pagamentos/:id', (req, res, next) => {
+router.get('/pagamentos/:id', (req, res, next) => {
   pagamentosServiceProxy(req, res, next);
 })
 
@@ -76,12 +76,12 @@ router.put('/pagamentos', (req, res, next) => {
 
 //#region Métodos da API Viagens
 // Retorna todas as viagens
-app.get('/viagens', (req, res, next) => {
+router.get('/viagens', (req, res, next) => {
   viagensServiceProxy(req, res, next);
 })
 
 // Retorna uma viagem específica
-app.get('/viagem/:id', (req, res, next) => {
+router.get('/viagem/:id', (req, res, next) => {
   viagensServiceProxy(req, res, next);
 })
 
@@ -98,17 +98,16 @@ router.put('/viagens', (req, res, next) => {
 
 //#region Métodos da API Voos
 // Retorna todos os clientes
-app.get('/voos', (req, res, next) => {
+router.get('/voos', (req, res, next) => {
   voosServiceProxy(req, res, next);
 })
 //#endregion
 
 
-app.use(logger('dev'));
-app.use(helmet());
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+router.use(logger('dev'));
+router.use(helmet());
+router.use(express.json());
+router.use(express.urlencoded({ extended: false }));
+router.use(cookieParser());
 
-var server = http.createServer(app);
-server.listen(3000);
+module.exports = router;

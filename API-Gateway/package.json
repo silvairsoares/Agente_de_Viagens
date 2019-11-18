@@ -1,13 +1,10 @@
 {
   "name": "api-gateway",
-  "version": "1.0.0",
-  "description": "Provides a single point of access for all microservices.",
-  "main": "index.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "start": "node index"
+    "start": "node ./bin/www"
   },
-  "author": "LuizTools",
-  "license": "ISC",
   "dependencies": {
     "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
