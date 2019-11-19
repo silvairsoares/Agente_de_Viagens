@@ -1,61 +1,110 @@
 {
+	"enable_local_script_checks": true,
 	"services": [
 		{
 			"name": "API-Gateway",
 			"tags": [
 				"node.js"
 			],
-			"address": "http://localhost/",
-			"port": 3000
+			"address": "http://localhost",
+			"port": 3000,
+			"checks": [
+				{
+					"id": "Checagem da API-Gateway",
+					"http": "http://localhost:3000/gateway/health",
+					"interval": "5s"
+				}
+			]
 		},
 		{
 			"name": "API-Carros",
 			"tags": [
 				"node.js"
 			],
-			"address": "http://localhost/",
-			"port": 3001
+			"address": "http://localhost",
+			"port": 3001,
+			"checks": [
+				{
+					"id": "Checagem da API-Carros",
+					"http": "http://localhost:3001/carros/health",
+					"interval": "5s"
+				}
+			]
 		},
 		{
 			"name": "API-Clientes",
 			"tags": [
 				"node.js"
 			],
-			"address": "http://localhost/",
-			"port": 3002
-		}
-		,
+			"address": "http://localhost",
+			"port": 3002,
+			"checks": [
+				{
+					"id": "Checagem da API-Clientes",
+					"http": "http://localhost:3002/clientes/health",
+					"interval": "5s"
+				}
+			]
+		},
 		{
 			"name": "API-Hoteis",
 			"tags": [
 				"node.js"
 			],
-			"address": "http://localhost/",
-			"port": 3003
+			"address": "http://localhost",
+			"port": 3003,
+			"checks": [
+				{
+					"id": "Checagem da API-Hoteis",
+					"http": "http://localhost:3003/hoteis/health",
+					"interval": "5s"
+				}
+			]
 		},
 		{
 			"name": "API-Pagamentos",
 			"tags": [
 				"node.js"
 			],
-			"address": "http://localhost/",
-			"port": 3004
+			"address": "http://localhost",
+			"port": 3004,
+			"checks": [
+				{
+					"id": "Checagem da API-Pagamentos",
+					"http": "http://localhost:3004/pagamentos/health",
+					"interval": "5s"
+				}
+			]
 		},
 		{
 			"name": "API-Viagens",
 			"tags": [
 				"node.js"
 			],
-			"address": "http://localhost/",
-			"port": 3005
+			"address": "http://localhost",
+			"port": 3005,
+			"checks": [
+				{
+					"id": "Checagem da API-Viagens",
+					"http": "http://localhost:3005/viagens/health",
+					"interval": "5s"
+				}
+			]
 		},
 		{
 			"name": "API-Voos",
 			"tags": [
 				"node.js"
 			],
-			"address": "http://localhost/",
-			"port": 3006
+			"address": "http://localhost",
+			"port": 3006,
+			"checks": [
+				{
+					"id": "Checagem da API-Voos",
+					"http": "http://localhost:3006/voos/health",
+					"interval": "5s"
+				}
+			]
 		}
 	]
 }
