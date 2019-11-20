@@ -1,0 +1,86 @@
+{
+  "carros": [
+    {
+      "id": 1,
+      "modelo": "BMW X9",
+      "cor": "Preto",
+      "preco": 1000
+    },
+    {
+      "id": 2,
+      "modelo": "Mercedes benz c180",
+      "cor": "Azul Calcinha",
+      "preco": 194.9
+    },
+    {
+      "modelo": "Parati",
+      "cor": "Vermelha",
+      "preco": 12,
+      "id": 5
+    }
+  ],
+  "clientes": [
+    {
+      "id": 2,
+      "nome": "HUMBERTO SANTANA MELO E SILVA",
+      "endereco": "Sem endereco",
+      "data_nascimento": "2019/01/01",
+      "imageUri": ""
+    },
+    {
+      "id": 3,
+      "nome": "string 3",
+      "endereco": "Sem endereco",
+      "data_nascimento": "2019/01/01",
+      "imageUri": ""
+    }
+  ],
+  "hoteis": [
+    {
+      "id": 1,
+      "nome_cidade": "Goiania",
+      "nome": "Castro Hotel",
+      "preco_diaria": 100
+    },
+    {
+      "id": 2,
+      "nome_cidade": "Goiania",
+      "nome": "Castro Guapore",
+      "preco_diaria": 80
+    },
+    {
+      "id": 3,
+      "nome_cidade": "Goiania",
+      "nome": "Ibis Hotel",
+      "preco_diaria": 250
+    }
+  ],
+  "voos": [
+    {
+      "id": 1,
+      "cidade_origem": "GYN",
+      "cidade_destino": "BSB",
+      "valor": 350.2,
+      "data_hora": "2019-01-01"
+    }
+  ],
+  "pagamentos": [
+    {
+      "id": 1,
+      "id_reserva": 1,
+      "subtotal": 2000,
+      "desconto": 98.25,
+      "valor": 1901.75
+    }
+  ],
+  "reservas": [
+    {
+      "id": 1,
+      "tipo": "CARRO",
+      "id_tipo": 1,
+      "valor": 100,
+      "data_inicio": "2019-01-01",
+      "data_fim": "2019-01-01"
+    }
+  ]
+}
