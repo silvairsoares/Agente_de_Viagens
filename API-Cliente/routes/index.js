@@ -58,4 +58,18 @@ router.put('/clientes/:id', function(req, res, next)
   
 });
 
+router.get('/clientes/busca/:string', function(req, res, next) 
+{
+  var result = [];
+  const clientes = dao.retrieveAll();
+  clientes.forEach(function(item)
+  {
+    if (item.Nome.toLowerCase().includes(req.params.string.toLowerCase())) 
+    { 
+       result.push(item);
+    }
+  });
+  res.json(result);
+});
+
 module.exports = router;

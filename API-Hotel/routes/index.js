@@ -1,14 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-// Retorna o estado de saúde da API
-router.get('/hoteis/health', (req, res, next) => {
-  res.json({status: 'UP'});
-})
-
-/* GET home page. */
-router.get('/hoteis', function(req, res, next) {
-  res.json([
+var hoteis = [
     {
       id:1, 
       nome: 'Angica Golden Hotel',
@@ -75,7 +68,42 @@ router.get('/hoteis', function(req, res, next) {
       cidade:'João Pessoa', 
       preco_diaria: '210,00'
     }
-  ]);
+  ];
+
+// Retorna o estado de saúde da API
+router.get('/hoteis/health', (req, res, next) => {
+  res.json({status: 'UP'});
+})
+
+/* GET home page. */
+router.get('/hoteis', function(req, res, next) {
+  res.json(hoteis);
+});
+
+router.get('/hoteis/:id', function(req, res, next) 
+{
+  hoteis.forEach(function(item){
+    if(item.id == parseInt(req.params.id, 10)){
+      res.json(item);
+    }
+  });
+});
+
+router.get('/hoteis/busca/:string', function(req, res, next) 
+{
+  var result = [];
+  hoteis.forEach(function(item)
+  {
+    if (item.nome.toLowerCase().includes(req.params.string.toLowerCase())) 
+    { 
+       result.push(item);
+    }
+    if (item.cidade.toLowerCase().includes(req.params.string.toLowerCase())) 
+    { 
+       result.push(item);
+    }
+  });
+  res.json(result);
 });
 
 module.exports = router;
