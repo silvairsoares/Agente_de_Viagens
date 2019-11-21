@@ -64,7 +64,7 @@ O projeto back-end é composto das seguintes APIs desenvolvidas em Node.JS
 
  - Salve o executável no seguinte diretório: "root_dir\Consul\Consul.exe";
 
- - Execute o arquivo "root_dir\Consul\Iniciar Consul.bat";
+ - Execute o arquivo "root_dir\1 - Iniciar Service Discovery Consul.bat";
 
  - Acesse o endereço "http://127.0.0.1:8500/ui/dc1/services" para ver o painel administrativo do Consul.
 
