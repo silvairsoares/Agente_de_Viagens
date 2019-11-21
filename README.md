@@ -40,8 +40,11 @@ Contendo as seguintes APIs desenvolvidas em Node.JS
 Passos para executar o frontend:
 
 1 - Acesse o diretório do projeto "mooydgrygoob.angular";
+
 2 - No console, digite o comando: "npm install -g json-server";
+
 3 - Digite o comando: "npm install";
+
 4 - Digite o comando: "json-server --watch src/assets/data/db.json";
 
 Seu console deverá exibir a mensagem:
@@ -63,4 +66,5 @@ Seu console deverá exibir a mensagem:
   http://localhost:3000
 
 5 - Em outra janela do console, digite o comando: "npm start"
+
 6 - Acesse o front end no endereço: http://localhost:4200/
