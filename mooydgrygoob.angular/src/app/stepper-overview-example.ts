@@ -83,6 +83,7 @@ export class StepperOverviewExample implements OnInit {
   ) {
     this.getCars();
     this.getClis();
+    this.getHoteis();
 
     this.filteredCars = this.myControlCars.valueChanges.pipe(
       startWith(''),
@@ -209,6 +210,12 @@ export class StepperOverviewExample implements OnInit {
     });
   }
 
+  deleteHotel(hotel: Hotel) {
+    this.hotelService.deleteHotel(hotel).subscribe(() => {
+      this.getHoteis();
+    });
+  }
+
   deletePagamento(car: Pagamento) {
     this.pagamentoService.deletePagamento(car).subscribe(() => {
       this.getPagamentos();
@@ -227,6 +234,11 @@ export class StepperOverviewExample implements OnInit {
     this.isEditarCarro = true;
   }
 
+  editHotel(hotel: Hotel) {
+    this.selectHotel(hotel)
+    this.isEditarHotel = true;
+  }
+
   editVoo(voo: Voo) {
     this.selectVoo(voo)
     this.isEditarVoo = true;
@@ -241,6 +253,10 @@ export class StepperOverviewExample implements OnInit {
     this.car = { ...car };
   }
 
+  selectHotel(hotel: Hotel) {
+    this.hotel = { ...hotel };
+  }
+
   selectVoo(voo: Voo) {
     this.voo = { ...voo };
   }
@@ -253,6 +269,12 @@ export class StepperOverviewExample implements OnInit {
   getClis() {
     this.clienteService.getClientes().subscribe((users: Cliente[]) => {
       this.clientes = users;
+    });
+  }
+
+  getHoteis() {
+    this.hotelService.getHoteis().subscribe((hoteis: Hotel[]) => {
+      this.hoteis = hoteis;
     });
   }
 
