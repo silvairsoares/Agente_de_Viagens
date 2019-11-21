@@ -1,6 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
+// Retorna o estado de saúde da API
+router.get('/carros/health', (req, res, next) => {
+  res.json({status: 'UP'});
+})
+
 /* GET home page. */
 router.get('/carros', function(req, res, next) {
   res.json([
