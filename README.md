@@ -83,4 +83,3 @@ O projeto back-end é composto das seguintes APIs desenvolvidas em Node.JS
 
  - Acesse o front end no endereço: http://localhost:4200/
  
- 
