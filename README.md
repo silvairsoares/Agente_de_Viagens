@@ -1,3 +1,5 @@
+================================================ **BACK-END** ================================================
+
 **Repositório contendo os microserviços para o trabalho final da disciplina "Arquitetura Orientada a Serviços"**
 
 Contendo as seguintes APIs desenvolvidas em Node.JS
@@ -16,7 +18,7 @@ Contendo as seguintes APIs desenvolvidas em Node.JS
 
 **API-Voo** http://localhost:3006/
 
-================== **FRONT-END** ================================================
+================================================ **FRONT-END** ================================================
 
 Comandos para rodar
 
@@ -35,3 +37,4 @@ Se seu console escrever... **OK**, o fake api estará em execução.
 Na pasta do projeto ...
 npm start
 
+Acesse o front end no endereço: http://localhost:4200/
