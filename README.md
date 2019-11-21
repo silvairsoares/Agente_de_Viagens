@@ -1,5 +1,15 @@
 **Repositório contendo os microserviços para o trabalho final da disciplina "Arquitetura Orientada a Serviços"**
 
+***Observação importante:*** 
+
+**Após fazer a primeira instalação de componetes (npm install) em cada diretório de todos os componentes, a inicialização do projeto pode ser automatizada através da execução dos 3 arquivos abaixo:**
+
+***1 - Iniciar Backends.bat***;
+
+***2 - Iniciar Service Discovery Consul.bat***;
+
+***3 - Iniciar Frontend.bat***;
+
 ===========================================================================
 
 **1 - Back-End** 
@@ -72,3 +82,5 @@ O projeto back-end é composto das seguintes APIs desenvolvidas em Node.JS
  - Em outra janela do console, digite o comando: "npm start"
 
  - Acesse o front end no endereço: http://localhost:4200/
+ 
+ 
