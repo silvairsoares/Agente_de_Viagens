@@ -13,7 +13,9 @@ const hoteisServiceProxy = httpProxy('http://localhost:3003');
 const pagamentosServiceProxy = httpProxy('http://localhost:3004');
 const viagensServiceProxy = httpProxy('http://localhost:3005');
 const voosServiceProxy = httpProxy('http://localhost:3006');
+var cors = require('cors')
 var router = express.Router();
+router.use(cors())
 
 //#region Métodos da API Gateway
 // Retorna o estado de saúde da API

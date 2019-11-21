@@ -21,14 +21,6 @@
   ],
   "clientes": [
     {
-      "id": 2,
-      "nome": "HUMBERTO SANTANA MELO E SILVA",
-      "endereco": "Sem endereco",
-      "data_nascimento": "2019/01/01",
-      "imageUri": "",
-      "dataNascimento": "1988-03-07"
-    },
-    {
       "id": 3,
       "nome": "Flávia Soares Pessoa",
       "endereco": "Niquelândia GO",
