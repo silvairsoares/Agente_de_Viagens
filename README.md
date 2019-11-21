@@ -37,21 +37,30 @@ Contendo as seguintes APIs desenvolvidas em Node.JS
 
 ========================= **FRONT-END** =========================
 
-Comandos para rodar:
+Passos para executar o frontend:
 
-npm install -g json-server
+1 - Acesse o diretório do projeto "mooydgrygoob.angular";
+2 - No console, digite o comando: "npm install -g json-server";
+3 - Digite o comando: "npm install";
+4 - Digite o comando: "json-server --watch src/assets/data/db.json";
 
-json-server --watch src/assets/data/db.json
-
-Se seu console escrever... **OK**, o fake api estará em execução.
+Seu console deverá exibir a mensagem:
 
 \{^_^}/ hi!
 
   Loading src/assets/data/db.json
   Done
 
+  Resources
+  http://localhost:3000/carros
+  http://localhost:3000/clientes
+  http://localhost:3000/hoteis
+  http://localhost:3000/voos
+  http://localhost:3000/pagamentos
+  http://localhost:3000/reservas
 
-Na pasta do projeto ...
-npm start
+  Home
+  http://localhost:3000
 
-Acesse o front end no endereço: http://localhost:4200/
+5 - Em outra janela do console, digite o comando: "npm start"
+6 - Acesse o front end no endereço: http://localhost:4200/
