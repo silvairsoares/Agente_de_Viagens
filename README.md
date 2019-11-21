@@ -19,11 +19,13 @@ Contendo as seguintes APIs desenvolvidas em Node.JS
 ================== **FRONT-END** ================================================
 
 Comandos para rodar
+
 npm install json-server
 
 json-server --watch src/assets/data/db.json
 
 Se seu console escrever... **OK**
+
 \{^_^}/ hi!
 
   Loading src/assets/data/db.json
