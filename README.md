@@ -55,14 +55,21 @@ Seu console deverá exibir a mensagem:
   Done
 
   Resources
+  
   http://localhost:3000/carros
+  
   http://localhost:3000/clientes
+  
   http://localhost:3000/hoteis
+  
   http://localhost:3000/voos
+  
   http://localhost:3000/pagamentos
+  
   http://localhost:3000/reservas
 
   Home
+  
   http://localhost:3000
 
 5 - Em outra janela do console, digite o comando: "npm start"
