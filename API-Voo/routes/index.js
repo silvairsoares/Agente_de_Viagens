@@ -60,7 +60,13 @@ var voos = [
     }
   ];
 
+// Retorna o estado de saúde da API
+router.get('/voos/health', (req, res, next) => {
+  res.json({status: 'UP'});
+})
+
 /* GET home page. */
+
 router.get('/voos', function(req, res, next) {
   res.json(voos);
 });

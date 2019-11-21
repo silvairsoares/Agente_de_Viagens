@@ -70,6 +70,11 @@ var hoteis = [
     }
   ];
 
+// Retorna o estado de saúde da API
+router.get('/hoteis/health', (req, res, next) => {
+  res.json({status: 'UP'});
+})
+
 /* GET home page. */
 router.get('/hoteis', function(req, res, next) {
   res.json(hoteis);

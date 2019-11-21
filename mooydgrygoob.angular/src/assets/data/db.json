@@ -1,0 +1,106 @@
+{
+  "carros": [
+    {
+      "id": 1,
+      "modelo": "BMW X9",
+      "cor": "Preto",
+      "preco": 1000
+    },
+    {
+      "id": 2,
+      "modelo": "Mercedes benz c180",
+      "cor": "Azul Calcinha",
+      "preco": 194.9
+    },
+    {
+      "modelo": "Parati",
+      "cor": "Vermelha",
+      "preco": 12,
+      "id": 5
+    }
+  ],
+  "clientes": [
+    {
+      "id": 2,
+      "nome": "HUMBERTO SANTANA MELO E SILVA",
+      "endereco": "Sem endereco",
+      "data_nascimento": "2019/01/01",
+      "imageUri": "",
+      "dataNascimento": "1988-03-07"
+    },
+    {
+      "id": 3,
+      "nome": "Flávia Soares Pessoa",
+      "endereco": "Niquelândia GO",
+      "data_nascimento": "2019/01/01",
+      "imageUri": "",
+      "dataNascimento": "1991-06-24"
+    },
+    {
+      "nome": "Silvair Leite",
+      "endereco": "Avenida da Mata ",
+      "id": 4,
+      "dataNascimento": "1982-01-19"
+    }
+  ],
+  "hoteis": [
+    {
+      "id": 1,
+      "nomecidade": "Goiania",
+      "nome": "Castro Hotel",
+      "precodiaria": 100
+    },
+    {
+      "id": 2,
+      "nomecidade": "Goiania",
+      "nome": "Castro Guapore",
+      "precodiaria": 80
+    },
+    {
+      "id": 3,
+      "nomecidade": "Goiania",
+      "nome": "Ibis Hotel",
+      "precodiaria": 250
+    },
+    {
+      "nome": "Hotel 1",
+      "nomeCidade": "Goiania",
+      "precoDiaria": 200,
+      "id": 4
+    },
+    {
+      "nome": "Hotel",
+      "nomeCidade": "GYN",
+      "precoDiaria": 100,
+      "id": 5
+    }
+  ],
+  "voos": [
+    {
+      "id": 1,
+      "cidade_origem": "GYN",
+      "cidade_destino": "BSB",
+      "valor": 350.2,
+      "data_hora": "2019-01-01"
+    }
+  ],
+  "pagamentos": [
+    {
+      "id": 1,
+      "id_reserva": 1,
+      "subtotal": 2000,
+      "desconto": 98.25,
+      "valor": 1901.75
+    }
+  ],
+  "reservas": [
+    {
+      "id": 1,
+      "tipo": "CARRO",
+      "id_tipo": 1,
+      "valor": 100,
+      "data_inicio": "2019-01-01",
+      "data_fim": "2019-01-01"
+    }
+  ]
+}

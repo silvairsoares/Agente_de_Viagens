@@ -64,6 +64,10 @@ var carros = [
     }
 
   ];
+// Retorna o estado de saúde da API
+router.get('/carros/health', (req, res, next) => {
+  res.json({status: 'UP'});
+})
 
 /* GET home page. */
 router.get('/carros', function(req, res, next) {

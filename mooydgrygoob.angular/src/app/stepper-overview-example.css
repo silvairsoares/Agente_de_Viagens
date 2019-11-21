@@ -1,0 +1,36 @@
+/** No CSS for this example */
+.container {
+    margin-top: 30px;
+}
+
+.add-car {
+    margin-bottom: 30px;
+}
+
+.list-car {
+    margin-bottom: 50px;
+}
+
+.btn-add-car {
+    margin-right: 10px;
+}
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  .example-option-img {
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+  
+  [dir='rtl'] .example-option-img {
+    margin-right: 0;
+    margin-left: 8px;
+  }
+  

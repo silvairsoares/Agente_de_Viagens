@@ -5,6 +5,11 @@ var dao = DAO.getInstance('memory');
 var express = require('express');
 var router = express.Router();
 
+// Retorna o estado de saúde da API
+router.get('/clientes/health', (req, res, next) => {
+  res.json({status: 'UP'});
+})
+
 /* GET home page. */
 router.get('/clientes', function(req, res, next)
 {
