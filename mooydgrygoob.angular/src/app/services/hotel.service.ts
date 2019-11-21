@@ -17,7 +17,7 @@ export class HotelService {
     }
   
     // Obtem todos os hotels
-    getHotels(): Observable<Hotel[]> {
+    getHoteis(): Observable<Hotel[]> {
       return this.httpClient.get<Hotel[]>(this.url)
         .pipe(
           retry(2),

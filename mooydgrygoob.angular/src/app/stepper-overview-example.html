@@ -103,11 +103,11 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="dt_nascimento">Data de Nascimento</label>
-                <input matInput type="date" id="dt_nascimento" name="dt_nascimento" required class="form-control"
-                  [ngClass]="{ 'is-invalid': f.submitted && price.invalid }" placeholder="Digite a Data de Nascimento">
-                <div *ngIf="f.submitted && price.invalid" class="invalid-feedback">
-                  <div *ngIf="price?.errors.required">Data de Nascimento é obrigatório</div>
+                <label for="dtNascimento">Data de Nascimento</label>
+                <input matInput type="date" id="dtNascimento" name="dtNascimento" required class="form-control" #dtNascimento="ngModel"
+                [(ngModel)]="cliente.dataNascimento" [ngClass]="{ 'is-invalid': f.submitted && dtNascimento.invalid }" placeholder="Digite a Data de Nascimento">
+                <div *ngIf="f.submitted && dtNascimento.invalid" class="invalid-feedback">
+                  <div *ngIf="dtNascimento?.errors.required">Data de Nascimento é obrigatório</div>
                 </div>
               </div>
               <button mat-button type="submit">Salvar</button>
@@ -126,6 +126,7 @@
                   <th scope="col">Id</th>
                   <th scope="col">Nome</th>
                   <th scope="col">Endereço</th>
+                  <th scope="col">Data Nascimento</th>
                   <th scope="col">Ações</th>
                 </tr>
               </thead>
@@ -135,6 +136,7 @@
                   <td>{{cliente.id}}</td>
                   <td>{{cliente.nome}}</td>
                   <td>{{cliente.endereco}}</td>
+                  <td>{{cliente.dataNascimento}}</td>
                   <td>
                     <button type="button" class="btn btn-sm btn-sm " style="background: green;color: white;"
                       (click)="selectUser(cliente)">Selecionar</button>
@@ -249,7 +251,7 @@
       </div>
     </form>
   </mat-step>
-  <!-- /////////////////////////////////////// -->
+  <!-- //////////////// Hotel  /////////////////////// -->
   <mat-step [stepControl]="quartoFormGroup">
     <form [formGroup]="quartoFormGroup">
       <ng-template matStepLabel>Qual Hotel ?</ng-template>
@@ -278,16 +280,16 @@
             <li class="breadcrumb-item active" aria-current="page">Gerenciamento de Hoteis</li>
           </ol>
         </nav>
-        <div class="card add-car" *ngIf="isEditarCarro">
+        <div class="card add-car" *ngIf="isEditarHotel">
           <h5 class="card-header">Adicionar/Atualizar Hoteis</h5>
           <div class="card-body">
-            <form id="add-form" (ngSubmit)="f.form.valid && saveHotel(f)" #f="ngForm" novalidate>
+            <form id="add-form" (ngSubmit)="fhotel.form.valid && saveHotel(fhotel)" #fhotel="ngForm" novalidate>
               <div>
                 <label for="nome">Nome</label>
                 <input matInput type="text" [(ngModel)]="hotel.nome" id="nome" name="nome" #nome="ngModel" required
-                  class="form-control" [ngClass]="{ 'is-invalid': f.submitted && model.invalid }"
+                  class="form-control" [ngClass]="{ 'is-invalid': fhotel.submitted && model.invalid }"
                   placeholder="Digite o Nome">
-                <div *ngIf="f.submitted && nome.invalid" class="invalid-feedback">
+                <div *ngIf="fhotel.submitted && nome.invalid" class="invalid-feedback">
                   <div *ngIf="nome?.errors.required">Nome é obrigatório</div>
                 </div>
               </div>
@@ -295,22 +297,22 @@
                 <label for="nomeCidade">Nome Cidade</label>
                 <input matInput type="text" [(ngModel)]="hotel.nomeCidade" id="nomeCidade" name="nomeCidade"
                   #nomeCidade="ngModel" required class="form-control"
-                  [ngClass]="{ 'is-invalid': f.submitted && nomeCidade.invalid }" placeholder="Digite nome da cidade">
-                <div *ngIf="f.submitted && nomeCidade.invalid" class="invalid-feedback">
+                  [ngClass]="{ 'is-invalid': fhotel.submitted && nomeCidade.invalid }" placeholder="Digite nome da cidade">
+                <div *ngIf="fhotel.submitted && nomeCidade.invalid" class="invalid-feedback">
                   <div *ngIf="nomeCidade?.errors.required">Nome Cidade é obrigatório</div>
                 </div>
               </div>
               <div class="form-group">
                 <label for="price">Preço</label>
                 <input matInput type="number" [(ngModel)]="hotel.precoDiaria" id="price" name="price" #price="ngModel"
-                  required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && price.invalid }"
+                  required class="form-control" [ngClass]="{ 'is-invalid': fhotel.submitted && price.invalid }"
                   placeholder="Digite o preço">
-                <div *ngIf="f.submitted && price.invalid" class="invalid-feedback">
+                <div *ngIf="fhotel.submitted && price.invalid" class="invalid-feedback">
                   <div *ngIf="price?.errors.required">Preço é obrigatório</div>
                 </div>
               </div>
               <button mat-button type="submit">Salvar</button>
-              <button mat-button type="reset" (click)="cleanForm(f)">Cancelar</button>
+              <button mat-button type="reset" (click)="cleanForm(fhotel)">Cancelar</button>
             </form>
           </div>
         </div>
@@ -336,9 +338,9 @@
                   <td>{{hotel.precoDiaria | currency}}</td>
                   <td>
                     <button type="button" class="btn btn-sm btn-sm " style="background: green;color: white;"
-                      (click)="selectCar(car)">Selecionar</button>
-                    <button type="button" class="btn btn-warning btn-sm ml-1" (click)="editCar(car)">Editar</button>
-                    <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteCar(car)">Deletar</button>
+                      (click)="selectHotel(hotel)">Selecionar</button>
+                    <button type="button" class="btn btn-warning btn-sm ml-1" (click)="editHotel(hotel)">Editar</button>
+                    <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteHotel(hotel)">Deletar</button>
                   </td>
                 </tr>
               </tbody>

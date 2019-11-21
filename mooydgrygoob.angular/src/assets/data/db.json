@@ -25,34 +25,54 @@
       "nome": "HUMBERTO SANTANA MELO E SILVA",
       "endereco": "Sem endereco",
       "data_nascimento": "2019/01/01",
-      "imageUri": ""
+      "imageUri": "",
+      "dataNascimento": "1988-03-07"
     },
     {
       "id": 3,
-      "nome": "string 3",
-      "endereco": "Sem endereco",
+      "nome": "Flávia Soares Pessoa",
+      "endereco": "Niquelândia GO",
       "data_nascimento": "2019/01/01",
-      "imageUri": ""
+      "imageUri": "",
+      "dataNascimento": "1991-06-24"
+    },
+    {
+      "nome": "Silvair Leite",
+      "endereco": "Avenida da Mata ",
+      "id": 4,
+      "dataNascimento": "1982-01-19"
     }
   ],
   "hoteis": [
     {
       "id": 1,
-      "nome_cidade": "Goiania",
+      "nomecidade": "Goiania",
       "nome": "Castro Hotel",
-      "preco_diaria": 100
+      "precodiaria": 100
     },
     {
       "id": 2,
-      "nome_cidade": "Goiania",
+      "nomecidade": "Goiania",
       "nome": "Castro Guapore",
-      "preco_diaria": 80
+      "precodiaria": 80
     },
     {
       "id": 3,
-      "nome_cidade": "Goiania",
+      "nomecidade": "Goiania",
       "nome": "Ibis Hotel",
-      "preco_diaria": 250
+      "precodiaria": 250
+    },
+    {
+      "nome": "Hotel 1",
+      "nomeCidade": "Goiania",
+      "precoDiaria": 200,
+      "id": 4
+    },
+    {
+      "nome": "Hotel",
+      "nomeCidade": "GYN",
+      "precoDiaria": 100,
+      "id": 5
     }
   ],
   "voos": [
