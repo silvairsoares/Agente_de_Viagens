@@ -4,9 +4,9 @@
 
 **Após fazer a primeira instalação de componetes (npm install) em cada diretório de todos os componentes, a inicialização do projeto pode ser automatizada através da execução dos 3 arquivos abaixo:**
 
-***1 - Iniciar Backends.bat***;
+***1 - Iniciar Service Discovery Consul.bat***;
 
-***2 - Iniciar Service Discovery Consul.bat***;
+***2 - Iniciar Backends.bat***;
 
 ***3 - Iniciar Frontend.bat***;
 
