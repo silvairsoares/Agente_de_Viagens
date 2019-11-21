@@ -83,11 +83,6 @@ export class StepperOverviewExample implements OnInit {
     private vooService: VooService,
     private pagamentoService: PagamentoService,
   ) {
-    this.getCars();
-    this.getClis();
-    this.getHoteis();
-    this.getReservas();
-
     this.primeiroFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required],
       controlReserva: new FormControl,
@@ -123,10 +118,10 @@ export class StepperOverviewExample implements OnInit {
   }
 
   ngOnInit() {
-
-
-
-
+    this.getCars();
+    this.getClis();
+    this.getHoteis();
+    this.getReservas();
   }
 
   // defini se um carro será criado ou atualizado
