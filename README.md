@@ -15,3 +15,20 @@ Contendo as seguintes APIs desenvolvidas em Node.JS
 **API-Viagem** http://localhost:3005/
 
 **API-Voo** http://localhost:3006/
+
+================== **FRONT-END** ======================
+Comandos para rodar
+npm install json-server
+
+json-server --watch src/assets/data/db.json
+
+Se seu console escrever... **OK**
+\{^_^}/ hi!
+
+  Loading src/assets/data/db.json
+  Done
+
+
+Na pasta do projeto ...
+npm start
+
