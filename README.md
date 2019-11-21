@@ -1,6 +1,7 @@
 **Repositório contendo os microserviços para o trabalho final da disciplina "Arquitetura Orientada a Serviços"**
 
 ===========================================================================
+
 **1 - Back-End** 
 
 O projeto back-end é composto das seguintes APIs desenvolvidas em Node.JS
@@ -58,6 +59,7 @@ O projeto back-end é composto das seguintes APIs desenvolvidas em Node.JS
  - Acesse o endereço "http://127.0.0.1:8500/ui/dc1/services" para ver o painel administrativo do Consul.
 
 ===========================================================================
+
 **2 - Front-End** 
 
 
