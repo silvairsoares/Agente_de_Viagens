@@ -20,11 +20,11 @@ Contendo as seguintes APIs desenvolvidas em Node.JS
 
 Comandos para rodar
 
-npm install json-server
+npm install -g json-server
 
 json-server --watch src/assets/data/db.json
 
-Se seu console escrever... **OK**
+Se seu console escrever... **OK**, o fake api estará em execução.
 
 \{^_^}/ hi!
 
