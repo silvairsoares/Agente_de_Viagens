@@ -13,6 +13,7 @@ import { Voo } from './models/voo';
 import { VooService } from './services/voo.service';
 import { Pagamento } from './models/pagamento';
 import { PagamentoService } from './services/pagamento.service';
+import { ReservaService } from './services/reserva.service';
 
 
 /**
@@ -26,6 +27,7 @@ import { PagamentoService } from './services/pagamento.service';
 export class StepperOverviewExample implements OnInit {
   isEditarCarro = false;
   isEditarCli = false;
+  isEditarReserva = false;
   isEditarVoo = false;
   isEditarHotel = false;
   isEditarPagamento = false;
@@ -37,10 +39,9 @@ export class StepperOverviewExample implements OnInit {
   quintoFormGroup: FormGroup;
   sextoFormGroup: FormGroup;
 
-  controlReserva = new FormControl();
   filteredReserva: Observable<Reserva[]>;
 
-  controlUser = new FormControl();
+
   filteredUser: Observable<Cliente[]>;
 
   myControlCars = new FormControl();
@@ -59,7 +60,7 @@ export class StepperOverviewExample implements OnInit {
   reservas: Reserva[];
 
   cliente = {} as Cliente;
-  clientes: Cliente[];
+  clientes: Cliente[] = [];
 
   car = {} as Carro;
   cars: Carro[];
@@ -67,46 +68,29 @@ export class StepperOverviewExample implements OnInit {
   hotel = {} as Hotel;
   hoteis: Hotel[];
 
-  voo ={} as Voo;
-  voos :Voo[];
+  voo = {} as Voo;
+  voos: Voo[];
 
-  pagamento={}as Pagamento;
-  pagamentos:Pagamento[];
+  pagamento = {} as Pagamento;
+  pagamentos: Pagamento[];
 
   constructor(
     private _formBuilder: FormBuilder,
     private carroService: CarroService,
+    private reservaService: ReservaService,
     private clienteService: ClienteService,
-    private hotelService:HotelService,
-    private vooService:VooService,
-    private pagamentoService:PagamentoService,
+    private hotelService: HotelService,
+    private vooService: VooService,
+    private pagamentoService: PagamentoService,
   ) {
-    this.getCars();
-    this.getClis();
-    this.getHoteis();
-
-    this.filteredCars = this.myControlCars.valueChanges.pipe(
-      startWith(''),
-      map(teste => teste ? this._filterCar(teste) : this.cars.slice()));
-
-    this.filteredHotel = this.myControlHotel.valueChanges.pipe(
-      startWith(''),
-      map(teste => teste ? this._filterHotel(teste) : this.hoteis.slice()));
-
-
-  }
-
-  ngOnInit() {
-
-    this.myControlCars.valueChanges.subscribe(carro => this.cars = this._filterCar(carro));
-
-    this.controlUser.valueChanges.subscribe(clienteNome => this.clientes = this._filterClientes(clienteNome));
-
     this.primeiroFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+      firstCtrl: ['', Validators.required],
+      controlReserva: new FormControl,
+
     });
     this.segundoFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
+      secondCtrl: ['', Validators.required],
+      controlUser: new FormControl()
     });
 
     this.terceiroFormGroup = this._formBuilder.group({
@@ -119,6 +103,25 @@ export class StepperOverviewExample implements OnInit {
     this.quintoFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
+
+    this.myControlCars.valueChanges.subscribe(carro => this.cars = this._filterCar(carro));
+    this.filteredCars = this.myControlCars.valueChanges.pipe(
+      startWith(''),
+      map(teste => teste ? this._filterCar(teste) : this.cars.slice()));
+
+    this.filteredHotel = this.myControlHotel.valueChanges.pipe(
+      startWith(''),
+      map(teste => teste ? this._filterHotel(teste) : this.hoteis.slice()));
+
+    this.filteredUser = this.segundoFormGroup.controls.controlUser.valueChanges.pipe(startWith(''),
+      map(cliente => cliente ? this._filterClientes(cliente) : this.clientes.slice()));
+  }
+
+  ngOnInit() {
+    this.getCars();
+    this.getClis();
+    this.getHoteis();
+    this.getReservas();
   }
 
   // defini se um carro será criado ou atualizado
@@ -188,6 +191,12 @@ export class StepperOverviewExample implements OnInit {
   getCars() {
     this.carroService.getCarros().subscribe((cars: Carro[]) => {
       this.cars = cars;
+    });
+  }
+
+  getReservas() {
+    this.reservaService.getReservas().subscribe((reservas: Reserva[]) => {
+      this.reservas = reservas;
     });
   }
 
@@ -285,10 +294,25 @@ export class StepperOverviewExample implements OnInit {
     });
   }
 
+  deleteReserva(reserva: Reserva) {
+    this.reservaService.deleteReserva(reserva).subscribe(() => {
+      this.getReservas();
+    });
+  }
+
   // copia o Usuario para ser editado.
   editUser(user: Cliente) {
-    this.cliente = { ...user };
+    this.selectUser(user);
     this.isEditarCli = true;
+  }
+
+  editReserva(reserva: Reserva) {
+    this.selectReserva(reserva);
+    this.isEditarReserva = true;
+  }
+
+  selectReserva(reserva: Reserva) {
+    this.reserva = { ...reserva };
   }
 
   selectUser(user: Cliente) {
