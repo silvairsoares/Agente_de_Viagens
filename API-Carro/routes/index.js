@@ -1,9 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/carros', function(req, res, next) {
-  res.json([
+var carros = [
     {
       id:1, 
       grupo: 'GRUPO A - ECONÔMICO', 
@@ -65,7 +63,39 @@ router.get('/carros', function(req, res, next) {
       valor:'360,73'
     }
 
-  ]);
+  ];
+
+/* GET home page. */
+router.get('/carros', function(req, res, next) {
+  res.json(carros);
 });
+
+router.get('/carros/:id', function(req, res, next) 
+{
+  carros.forEach(function(item){
+    if(item.id == parseInt(req.params.id, 10)){
+      res.json(item);
+    }
+  });
+});
+
+router.get('/carros/busca/:string', function(req, res, next) 
+{
+  var result = [];
+  carros.forEach(function(item)
+  {
+    if (item.grupo.toLowerCase().includes(req.params.string.toLowerCase())) 
+    { 
+       result.push(item);
+    }
+    if (item.modelo.toLowerCase().includes(req.params.string.toLowerCase())) 
+    { 
+       result.push(item);
+    }
+  });
+  res.json(result);
+});
+
+
 
 module.exports = router;
