@@ -1,5 +1,7 @@
 **Repositório contendo os microserviços para o trabalho final da disciplina "Arquitetura Orientada a Serviços"**
 
+===========================================================================
+
 ***Observação importante:*** 
 
 **Após fazer a primeira instalação de componetes (npm install) em cada diretório de todos os componentes ou execução do arquivo ***"1 - Instalar pacotes npm.bat"***, a inicialização do projeto pode ser automatizada através da execução dos 3 arquivos abaixo:**
@@ -50,6 +52,7 @@ O projeto back-end é composto das seguintes APIs desenvolvidas em Node.JS
 
 **1.2 - Executando o back-end:**
 
+
 **Para iniciar o back-end execute os seguintes passos:**
 
  - Acesse o diretório de cada um dos microserviços;
@@ -57,6 +60,9 @@ O projeto back-end é composto das seguintes APIs desenvolvidas em Node.JS
  - Digite o comando "npm install" (apenas na primeira vez);
  
  - Digite o comando "npm start".
+
+
+===========================================================================
 
 **1.3 - Executando o service discovery Consul:**
 
@@ -67,6 +73,7 @@ O projeto back-end é composto das seguintes APIs desenvolvidas em Node.JS
  - Execute o arquivo "root_dir\1 - Iniciar Service Discovery Consul.bat";
 
  - Acesse o endereço "http://127.0.0.1:8500/ui/dc1/services" para ver o painel administrativo do Consul.
+
 
 ===========================================================================
 
@@ -82,6 +89,8 @@ A criação de teste unitários automatizados foi feita utilizando os seguintes 
 
 Processo automatizado através do arquivo **4 - Executa testes automatizados com o mocha e chai.bat**.
 
+
+===========================================================================
 
 **3 - Front-End** 
 
