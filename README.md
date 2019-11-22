@@ -2,13 +2,13 @@
 
 ***Observação importante:*** 
 
-**Após fazer a primeira instalação de componetes (npm install) em cada diretório de todos os componentes, a inicialização do projeto pode ser automatizada através da execução dos 3 arquivos abaixo:**
+**Após fazer a primeira instalação de componetes (npm install) em cada diretório de todos os componentes ou execução do arquivo "1 - Instalar pacotes npm.bat", a inicialização do projeto pode ser automatizada através da execução dos 3 arquivos abaixo:**
 
-***1 - Iniciar Service Discovery Consul.bat***;
+***2 - Iniciar Service Discovery Consul.bat***;
 
-***2 - Iniciar Backends.bat***;
+***3 - Iniciar Backends.bat***;
 
-***3 - Iniciar Frontend.bat***;
+***5 - Iniciar Frontend.bat***;
 
 ===========================================================================
 
@@ -70,10 +70,21 @@ O projeto back-end é composto das seguintes APIs desenvolvidas em Node.JS
 
 ===========================================================================
 
-**2 - Front-End** 
+**2 - Testes automatizados** 
+
+A criação de teste unitários automatizados foi feita utilizando os seguintes frameworks:
+ -Mocha -> https://www.npmjs.com/package/mocha
+ -Chai -> https://www.npmjs.com/package/chai
+
+**2.1 - Executando os testes:**
+
+Processo automatizado através do arquivo **4 - Executa testes automatizados com o mocha e chai.bat**.
 
 
-**2.1 - Executando o Front-end:**
+**3 - Front-End** 
+
+
+**3.1 - Executando o Front-end:**
 
  - Acesse o diretório do projeto "mooydgrygoob.angular";
 
@@ -82,4 +93,6 @@ O projeto back-end é composto das seguintes APIs desenvolvidas em Node.JS
  - Em outra janela do console, digite o comando: "npm start"
 
  - Acesse o front end no endereço: http://localhost:4200/
+ 
+ Ou execute o processo automatizado através do arquivo **"5 - Iniciar Frontend.bat"**
  
