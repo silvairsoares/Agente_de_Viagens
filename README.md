@@ -74,9 +74,9 @@ O projeto back-end é composto das seguintes APIs desenvolvidas em Node.JS
 
 A criação de teste unitários automatizados foi feita utilizando os seguintes frameworks:
 
- -Mocha -> https://www.npmjs.com/package/mocha
+-**Mocha** -> https://www.npmjs.com/package/mocha
 
--Chai -> https://www.npmjs.com/package/chai
+-**Chai** -> https://www.npmjs.com/package/chai
 
 **2.1 - Executando os testes:**
 
@@ -84,6 +84,12 @@ Processo automatizado através do arquivo **4 - Executa testes automatizados com
 
 
 **3 - Front-End** 
+
+O projeto front-end foi construido utilizando-se se os seguintes frameworks:
+
+-**Angular** -> https://angular.io/
+
+-**Angular Material** -> https://material.angular.io/
 
 
 **3.1 - Executando o Front-end:**
