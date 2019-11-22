@@ -2,7 +2,7 @@
 
 ***Observação importante:*** 
 
-**Após fazer a primeira instalação de componetes (npm install) em cada diretório de todos os componentes ou execução do arquivo **"1 - Instalar pacotes npm.bat"**, a inicialização do projeto pode ser automatizada através da execução dos 3 arquivos abaixo:**
+**Após fazer a primeira instalação de componetes (npm install) em cada diretório de todos os componentes ou execução do arquivo **1 - Instalar pacotes npm.bat**, a inicialização do projeto pode ser automatizada através da execução dos 3 arquivos abaixo:**
 
 ***2 - Iniciar Service Discovery Consul.bat***;
 
