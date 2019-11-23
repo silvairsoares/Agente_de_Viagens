@@ -1,0 +1,532 @@
+<mat-horizontal-stepper #stepper>
+  <!-- ////////// RESERVAS ////////// -->
+  <mat-step [stepControl]="viagemFormGroup">
+    <form [formGroup]="viagemFormGroup">
+      <ng-template matStepLabel>Reservas</ng-template>
+      <div>
+        <button mat-button matStepperNext>Novo</button>
+      </div>
+      <div class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Gerenciamento de Reservas</li>
+          </ol>
+        </nav>
+        <div class="card list-car">
+          <h5 class="card-header">Lista de Reservas</h5>
+          <div class="card-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Id Cliente</th>
+                  <th scope="col">Ações </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let reserva of viagens">
+                  <td>{{reserva.id}}</td>
+                  <td>{{reserva.idcliente}}</td>
+                  <td>
+                    <button type="button" class="btn btn-warning btn-sm ml-1" (click)="editViagem(reserva)">Editar</button>
+                    <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteViagem(reserva)">Deletar</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-step>
+  <!-- //////////////// Cliente /////////////////////// -->
+  <mat-step [stepControl]="clienteFormGroup">
+    <form [formGroup]="clienteFormGroup" >
+      <ng-template matStepLabel>Selecione o Cliente</ng-template>
+        <mat-form-field class="example-full-width">
+          <input type="text" matInput formControlName="controlCliente" [matAutocomplete]="autoCli"
+            placeholder="Nome Cliente" [value]="cliente.Nome">
+          <mat-autocomplete #autoCli="matAutocomplete"> 
+            <mat-option *ngFor="let user of filteredUser | async" [value]="user.Nome" (onSelectionChange)="selecionarCliente(user)">
+                <span>{{ user.id }}</span>|
+              <span>{{ user.Nome }}</span>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Próximo</button>
+        <button mat-button (click)="novoCli()" id="toggle-linear">Novo</button>
+      </div>
+
+
+      <div class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Gerenciamento de Clientes</li>
+          </ol>
+        </nav>
+        <div class="card add-car" *ngIf="isEditarCli">
+          <h5 class="card-header">Adicionar/Atualizar Clientes</h5>
+          <div class="card-body">
+            <form id="add-form" (ngSubmit)="f.form.valid && saveCli(f)" #f="ngForm" novalidate>
+              <div>
+                <label for="Nome">Nome</label>
+                <input matInput type="text" [(ngModel)]="cliente.Nome" id="Nome" name="Nome" #model="ngModel" required
+                  class="form-control" [ngClass]="{ 'is-invalid': f.submitted && model.invalid }"
+                  placeholder="Digite o Nome">
+                <div *ngIf="f.submitted && model.invalid" class="invalid-feedback">
+                  <div *ngIf="model?.errors.required">Nome é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="Endereco">Endereço</label>
+                <input matInput type="text" [(ngModel)]="cliente.Endereco" id="Endereco" name="Endereco"
+                  #color="ngModel" required class="form-control"
+                  [ngClass]="{ 'is-invalid': f.submitted && color.invalid }" placeholder="Digite o endereço">
+                <div *ngIf="f.submitted && color.invalid" class="invalid-feedback">
+                  <div *ngIf="color?.errors.required">Endereço é obrigatória</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="dtNascimento">Data de Nascimento</label>
+                <input matInput type="date" id="dtNascimento" name="dtNascimento" required class="form-control"
+                  #dtNascimento="ngModel" [(ngModel)]="cliente.Nascimento"
+                  [ngClass]="{ 'is-invalid': f.submitted && dtNascimento.invalid }"
+                  placeholder="Digite a Data de Nascimento">
+                <div *ngIf="f.submitted && dtNascimento.invalid" class="invalid-feedback">
+                  <div *ngIf="dtNascimento?.errors.required">Data de Nascimento é obrigatório</div>
+                </div>
+              </div>
+              <button mat-button type="submit">Salvar</button>
+              <button mat-button type="reset" (click)="cleanForm(f)">Cancelar</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="card list-car">
+          <h5 class="card-header">Lista de Clientes</h5>
+          <div class="card-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Endereço</th>
+                  <th scope="col">Data Nascimento</th>
+                  <th scope="col">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let cliente of clientes">
+                  <td>{{cliente.id}}</td>
+                  <td>{{cliente.Nome}}</td>
+                  <td>{{cliente.Endereco}}</td>
+                  <td>{{cliente.Nascimento | date: "dd-MM-yyyy"}}</td>
+                  <td>
+                    <button type="button" class="btn btn-sm btn-sm " style="background: green;color: white;"
+                      (click)="selectUser(cliente)">Selecionar</button>
+                    <button type="button" class="btn btn-warning btn-sm ml-1"
+                      (click)="editUser(cliente)">Editar</button>
+                    <button type="button" class="btn btn-danger btn-sm ml-1"
+                      (click)="deleteUser(cliente)">Deletar</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-step>
+  <!-- //////////////// CARRO /////////////////////// -->
+  <mat-step [stepControl]="carroFormGroup">
+    <form [formGroup]="carroFormGroup">
+      <ng-template matStepLabel>Informe o carro desejado</ng-template>
+
+      <mat-form-field class="example-full-width">
+        <input type="text" matInput formControlName="controlCarro" [matAutocomplete]="autoCar" 
+        placeholder="Modelo Carro"  [value]="car.modelo">
+        <mat-autocomplete #autoCar="matAutocomplete">
+          <mat-option *ngFor="let car of filteredCars | async" [value]="car.modelo" (onSelectionChange)="selecionarCarro(car)">
+            {{ car.modelo }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <div>
+        <label for="dtInicio">De</label>
+        <input matInput type="date" formControlName="dataInicio" id="dtInicio" name="dtInicio" required class="form-control" style="width: 15%;" >
+
+        <label for="dtFim"> ate </label>
+        <input matInput type="date" formControlName="dataFim" id="dtFim" name="dtFim"  required class="form-control" style="width: 15%;">
+
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Anterior</button>
+        <button mat-button matStepperNext>Próximo</button>
+        <button mat-button (click)="novoCarro()" id="toggle-linear">Novo</button>
+      </div>
+
+
+      <div class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Gerenciamento de carros</li>
+          </ol>
+        </nav>
+        <div class="card add-car" *ngIf="isEditarCarro">
+          <h5 class="card-header">Adicionar/Atualizar carro</h5>
+          <div class="card-body">
+            <form id="add-form" (ngSubmit)="f.form.valid && saveCar(f)" #f="ngForm" novalidate>
+              <div>
+                <label for="model">Modelo</label>
+                <input matInput type="text" [(ngModel)]="car.modelo" id="model" name="model" #model="ngModel" required
+                  class="form-control" [ngClass]="{ 'is-invalid': f.submitted && model.invalid }"
+                  placeholder="Digite o modelo">
+                <div *ngIf="f.submitted && model.invalid" class="invalid-feedback">
+                  <div *ngIf="model?.errors.required">Modelo é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="color">Cor</label>
+                <input matInput type="text" [(ngModel)]="car.cor" id="color" name="color" #color="ngModel" required
+                  class="form-control" [ngClass]="{ 'is-invalid': f.submitted && color.invalid }"
+                  placeholder="Digite a cor">
+                <div *ngIf="f.submitted && color.invalid" class="invalid-feedback">
+                  <div *ngIf="color?.errors.required">Cor é obrigatória</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="price">Preço</label>
+                <input matInput type="number" [(ngModel)]="car.valor" id="price" name="price" #price="ngModel" required
+                  class="form-control" [ngClass]="{ 'is-invalid': f.submitted && price.invalid }"
+                  placeholder="Digite o preço">
+                <div *ngIf="f.submitted && price.invalid" class="invalid-feedback">
+                  <div *ngIf="price?.errors.required">Preço é obrigatório</div>
+                </div>
+              </div>
+              <button mat-button type="submit">Salvar</button>
+              <button mat-button type="reset" (click)="cleanForm(f)">Cancelar</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="card list-car">
+          <h5 class="card-header">Lista de carros</h5>
+          <div class="card-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Modelo</th>
+                  <th scope="col">Cor</th>
+                  <th scope="col">Preço</th>
+                  <th scope="col">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let car of cars">
+                  <td>{{car.id}}</td>
+                  <td>{{car.modelo}}</td>
+                  <td>{{car.cor}}</td>
+                  <td>{{car.valor | currency}}</td>
+                  <td>
+                    <button type="button" class="btn btn-sm btn-sm " style="background: green;color: white;"
+                      (click)="selectCar(car)">Selecionar</button>
+                    <button type="button" class="btn btn-warning btn-sm ml-1" (click)="editCar(car)">Editar</button>
+                    <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteCar(car)">Deletar</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-step>
+  <!-- //////////////// Hotel  /////////////////////// -->
+  <mat-step [stepControl]="hotelFormGroup">
+    <form [formGroup]="hotelFormGroup">
+      <ng-template matStepLabel>Qual Hotel ?</ng-template>
+
+      <mat-form-field class="example-full-width">
+        <input type="text" matInput formControlName="controlHotel" [matAutocomplete]="auto"
+          placeholder="Informe o Nome do hotel">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let hotel of filteredHotel | async" [value]="hotel.Nome" (onSelectionChange)="selecionarHotel(hotel)">
+            <span>{{hotel.id}}</span>
+            <span>{{hotel.Nome}}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <div>
+          <label for="dtInicio">De</label>
+          <input matInput type="date" formControlName="dataInicio" id="dtInicio" name="dtInicio" required class="form-control" style="width: 15%;" >
+  
+          <label for="dtFim"> ate </label>
+          <input matInput type="date" formControlName="dataFim" id="dtFim" name="dtFim"  required class="form-control" style="width: 15%;">
+  
+        </div>
+
+      <div>
+        <button mat-button matStepperPrevious>Anterior</button>
+        <button mat-button matStepperNext>Próximo</button>
+        <button mat-button (click)="novoHotel()" id="toggle-linear">Novo</button>
+      </div>
+
+
+      <div class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Gerenciamento de Hoteis</li>
+          </ol>
+        </nav>
+        <div class="card add-car" *ngIf="isEditarHotel">
+          <h5 class="card-header">Adicionar/Atualizar Hoteis</h5>
+          <div class="card-body">
+            <form id="add-form" (ngSubmit)="fhotel.form.valid && saveHotel(fhotel)" #fhotel="ngForm" novalidate>
+              <div>
+                <label for="Nome">Nome</label>
+                <input matInput type="text" [(ngModel)]="hotel.Nome" id="Nome" name="Nome" #Nome="ngModel" required
+                  class="form-control" [ngClass]="{ 'is-invalid': fhotel.submitted && model.invalid }"
+                  placeholder="Digite o Nome">
+                <div *ngIf="fhotel.submitted && Nome.invalid" class="invalid-feedback">
+                  <div *ngIf="Nome?.errors.required">Nome é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="nomeCidade">Nome Cidade</label>
+                <input matInput type="text" [(ngModel)]="hotel.nomeCidade" id="nomeCidade" name="nomeCidade"
+                  #nomeCidade="ngModel" required class="form-control"
+                  [ngClass]="{ 'is-invalid': fhotel.submitted && nomeCidade.invalid }" placeholder="Digite Nome da cidade">
+                <div *ngIf="fhotel.submitted && nomeCidade.invalid" class="invalid-feedback">
+                  <div *ngIf="nomeCidade?.errors.required">Nome Cidade é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="price">Preço</label>
+                <input matInput type="number" [(ngModel)]="hotel.precoDiaria" id="price" name="price" #price="ngModel"
+                  required class="form-control" [ngClass]="{ 'is-invalid': fhotel.submitted && price.invalid }"
+                  placeholder="Digite o preço">
+                <div *ngIf="fhotel.submitted && price.invalid" class="invalid-feedback">
+                  <div *ngIf="price?.errors.required">Preço é obrigatório</div>
+                </div>
+              </div>
+              <button mat-button type="submit">Salvar</button>
+              <button mat-button type="reset" (click)="cleanForm(fhotel)">Cancelar</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="card list-car">
+          <h5 class="card-header">Lista de Hoteis</h5>
+          <div class="card-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Cidade</th>
+                  <th scope="col">Preço</th>
+                  <th scope="col">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let hotel of hoteis">
+                  <td>{{hotel.id}}</td>
+                  <td>{{hotel.Nome}}</td>
+                  <td>{{hotel.nomeCidade}}</td>
+                  <td>{{hotel.precoDiaria | currency}}</td>
+                  <td>
+                    <button type="button" class="btn btn-sm btn-sm " style="background: green;color: white;"
+                      (click)="selectHotel(hotel)">Selecionar</button>
+                    <button type="button" class="btn btn-warning btn-sm ml-1" (click)="editHotel(hotel)">Editar</button>
+                    <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteHotel(hotel)">Deletar</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-step>
+  <!-- /////////////// VOOOOOOOOO //////////////////////// -->
+  <mat-step [stepControl]="vooFormGroup">
+    <form [formGroup]="vooFormGroup">
+      <ng-template matStepLabel>Qual Voo ?</ng-template>
+
+      <mat-form-field class="example-full-width">
+        <input type="text" matInput formControlName="controlVoo" [matAutocomplete]="autoVoo"
+          placeholder="Informe o voo">
+        <mat-autocomplete #autoVoo="matAutocomplete">
+          <mat-option *ngFor="let voo of filteredVoo | async" [value]="voo.id" (onSelectionChange)="selecionarVoo(voo)">
+            <span>{{voo.id}}</span> |
+            <span>{{voo.cidadeOrigem}}</span>|
+            <span>{{voo.cidadeDestino}}</span>|
+            <span>{{voo.valor}}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <div>
+        <button mat-button matStepperPrevious>Anterior</button>
+        <button mat-button matStepperNext>Próximo</button>
+        <button mat-button (click)="isEditarVoo = !isEditarVoo" id="toggle-linear">Novo</button>
+      </div>
+
+
+      <div class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Gerenciamento de Voos</li>
+          </ol>
+        </nav>
+        <div class="card add-car" *ngIf="isEditarVoo">
+          <h5 class="card-header">Adicionar/Atualizar Voos</h5>
+          <div class="card-body">
+            <form id="add-form" (ngSubmit)="f.form.valid && saveVoo(f)" #f="ngForm" novalidate>
+              <div>
+                <label for="cidadeOrigem">Cidade de Origem</label>
+                <input matInput type="text" [(ngModel)]="voo.cidadeOrigem" id="cidadeOrigem" name="cidadeOrigem"
+                  #cidadeOrigem="ngModel" required class="form-control"
+                  [ngClass]="{ 'is-invalid': f.submitted && cidadeOrigem.invalid }" placeholder="Cidade de Origem">
+                <div *ngIf="f.submitted && cidadeOrigem.invalid" class="invalid-feedback">
+                  <div *ngIf="cidadeOrigem?.errors.required">Cidade Origem e obrigatória</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="cidadeDestino">Cidade de destino</label>
+                <input matInput type="text" [(ngModel)]="voo.cidadeDestino" id="cidadeDestino" name="cidadeDestino"
+                  #cidadeDestino="ngModel" required class="form-control"
+                  [ngClass]="{ 'is-invalid': f.submitted && cidadeDestino.invalid }"
+                  placeholder="Digite Nome da cidade Destino">
+                <div *ngIf="f.submitted && cidadeDestino.invalid" class="invalid-feedback">
+                  <div *ngIf="cidadeDestino?.errors.required">Nome Cidade destino é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="price">Preço</label>
+                <input matInput type="number" [(ngModel)]="voo.valor" id="price" name="price" #price="ngModel" required
+                  class="form-control" [ngClass]="{ 'is-invalid': f.submitted && price.invalid }"
+                  placeholder="Digite o preço">
+                <div *ngIf="f.submitted && price.invalid" class="invalid-feedback">
+                  <div *ngIf="price?.errors.required">Preço é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="dataHora">Horario</label>
+                <input matInput type="number" [(ngModel)]="voo.dataHora" id="dataHora" name="dataHora"
+                  #dataHora="ngModel" required class="form-control"
+                  [ngClass]="{ 'is-invalid': f.submitted && dataHora.invalid }" placeholder="Digite o horário">
+                <div *ngIf="f.submitted && dataHora.invalid" class="invalid-feedback">
+                  <div *ngIf="dataHora?.errors.required">Horario é obrigatório</div>
+                </div>
+              </div>
+              <button mat-button type="submit">Salvar</button>
+              <button mat-button type="reset" (click)="cleanForm(f)">Cancelar</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="card list-car">
+          <h5 class="card-header">Lista de Voos</h5>
+          <div class="card-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Cidade Origem</th>
+                  <th scope="col">Cidade destino</th>
+                  <th scope="col">Horario</th>
+                  <th scope="col">Preço</th>
+                  <th scope="col">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let voo of voos">
+                  <td>{{voo.id}}</td>
+                  <td>{{voo.cidadeOrigem}}</td>
+                  <td>{{voo.cidadeDestino}}</td>
+                  <td>{{voo.dataHora}}</td>
+                  <td>{{voo.valor | currency}}</td>
+                  <td>
+                    <button type="button" class="btn btn-sm btn-sm " style="background: green;color: white;"
+                      (click)="selectVoo(voo)">Selecionar</button>
+                    <button type="button" class="btn btn-warning btn-sm ml-1" (click)="editVoo(voo)">Editar</button>
+                    <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteVoo(voo)">Deletar</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-step>
+  <!-- //////////////////  PAGAMENTO   ///////////////////// -->
+  <mat-step [stepControl]="pagamentoFormGroup">
+        <form [formGroup]="pagamentoFormGroup">
+            <ng-template matStepLabel>Quer Pagar como ?</ng-template>
+    
+        
+          <div>
+            <button mat-button matStepperPrevious>Anterior</button>
+            <button mat-button (click)="isEditarPagamento = !isEditarPagamento" id="toggle-linear">Novo</button>
+            <button mat-button (click)="gravarViagem(stepper)">Finalizar</button>
+          </div>
+    
+    
+          <div class="container">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">Gerenciamento de Pagamentos</li>
+              </ol>
+            </nav>
+            <div class="card add-car" *ngIf="isEditarPagamento">
+              <h5 class="card-header">Adicionar/Atualizar Pagamentos</h5>
+              <div class="card-body">
+                <form id="add-form" (ngSubmit)="f.form.valid && savePagamento(f)" #f="ngForm" novalidate>
+                  <div>
+                    <label for="cidadeOrigem">Reserva</label>
+                    <input matInput type="text" [(ngModel)]="pagamento.idReserva" id="idReserva" name="idReserva" disabled=true
+                      #idReserva="ngModel" required class="form-control"
+                      [ngClass]="{ 'is-invalid': f.submitted && idReserva.invalid }" placeholder="Id da reserva">
+                    <div *ngIf="f.submitted && idReserva.invalid" class="invalid-feedback">
+                      <div *ngIf="idReserva?.errors.required">Reserva é obrigatória</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="subtotal">Subtotal</label>
+                    <input matInput type="number" [(ngModel)]="pagamento.subtotal" id="subtotal" name="subtotal"
+                      #subtotal="ngModel" required class="form-control"
+                      [ngClass]="{ 'is-invalid': f.submitted && subtotal.invalid }"
+                      placeholder="Digite o subtotal">
+                    <div *ngIf="f.submitted && subtotal.invalid" class="invalid-feedback">
+                      <div *ngIf="subtotal?.errors.required">Subtotal é obrigatório</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="desconto">Valor desconto</label>
+                    <input matInput type="number" [(ngModel)]="pagamento.desconto" id="desconto" name="desconto" #desconto="ngModel"
+                    class="form-control" required
+                      placeholder="Digite o valor de desconto">                   
+                  </div>
+                  <div class="form-group">
+                    <label for="valor">Valor</label>
+                    <input matInput type="number" [(ngModel)]="pagamento.valor" id="valor" name="valor"
+                      #valor="ngModel" required class="form-control"
+                      [ngClass]="{ 'is-invalid': f.submitted && valor.invalid }" placeholder="Digite o valor">
+                    <div *ngIf="f.submitted && valor.invalid" class="invalid-feedback">
+                      <div *ngIf="valor?.errors.required">Valor é obrigatório</div>
+                    </div>
+                  </div>
+                  <button mat-button type="submit">Salvar</button>
+                  <button mat-button type="reset" (click)="cleanForm(f)">Cancelar</button>
+                </form>
+              </div>
+            </div>           
+          </div>
+        </form>
+      </mat-step>
+</mat-horizontal-stepper>

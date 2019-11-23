@@ -8,11 +8,11 @@ class ClienteMemoryDAO
   {
     this.data = new Map()
 
-    this.createCliente(1, 'Rafael Gonzaga', 'Rua Periata', 'Programador','22/07/1992');
-    this.createCliente(2, 'Rafael Borges', 'Rua T15', 'Programador','02/01/1984');
-    this.createCliente(3, 'Silvair', 'Av. 125', 'Programador','15/06/1980');
-    this.createCliente(4, 'Humberto Santana', 'R. Mariana 120', 'Programador','29/11/1991');
-    this.createCliente(5, 'Junior', 'Av. T63', 'Programador','06/04/1982');
+    this.createCliente(1, 'Rafael Gonzaga', 'Rua Periata', 'Programador','2019-11-25');
+    this.createCliente(2, 'Rafael Borges', 'Rua T15', 'Programador','2019-11-25');
+    this.createCliente(3, 'Silvair', 'Av. 125', 'Programador','2019-11-25');
+    this.createCliente(4, 'Humberto Santana', 'R. Mariana 120', 'Programador','2019-11-25');
+    this.createCliente(5, 'Junior', 'Av. T63', 'Programador','2019-11-25');
   }
 
   createCliente (id, Nome, Endereco, Profissao, Nascimento) 

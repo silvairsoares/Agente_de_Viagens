@@ -22,15 +22,15 @@
   "clientes": [
     {
       "id": 3,
-      "nome": "Flávia Soares Pessoa",
-      "endereco": "Niquelândia GO",
+      "Nome": "Flávia Soares Pessoa",
+      "Endereco": "Niquelândia GO",
       "data_nascimento": "2019/01/01",
       "imageUri": "",
       "dataNascimento": "1991-06-24"
     },
     {
-      "nome": "Silvair Leite",
-      "endereco": "Avenida da Mata ",
+      "Nome": "Silvair Leite",
+      "Endereco": "Avenida da Mata ",
       "id": 4,
       "dataNascimento": "1982-01-19"
     }
@@ -39,29 +39,29 @@
     {
       "id": 1,
       "nomecidade": "Goiania",
-      "nome": "Castro Hotel",
+      "Nome": "Castro Hotel",
       "precodiaria": 100
     },
     {
       "id": 2,
       "nomecidade": "Goiania",
-      "nome": "Castro Guapore",
+      "Nome": "Castro Guapore",
       "precodiaria": 80
     },
     {
       "id": 3,
       "nomecidade": "Goiania",
-      "nome": "Ibis Hotel",
+      "Nome": "Ibis Hotel",
       "precodiaria": 250
     },
     {
-      "nome": "Hotel 1",
+      "Nome": "Hotel 1",
       "nomeCidade": "Goiania",
       "precoDiaria": 200,
       "id": 4
     },
     {
-      "nome": "Hotel",
+      "Nome": "Hotel",
       "nomeCidade": "GYN",
       "precoDiaria": 100,
       "id": 5

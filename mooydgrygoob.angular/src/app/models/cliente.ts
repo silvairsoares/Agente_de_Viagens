@@ -1,7 +1,7 @@
 export interface Cliente {
     id: number;
-    nome: string;
-    endereco: String;
-    dataNascimento:String;
-    imageUri: string;
+    Nome: string;
+    Endereco: string;
+    Profissao:string;
+    Nascimento:string;
 }

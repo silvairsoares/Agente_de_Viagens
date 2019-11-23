@@ -3,5 +3,5 @@ export interface Voo {
     cidadeOrigem:string;
     cidadeDestino:string;
     valor:number;
-    dataHora:Date;
+    dataHora:string;
 }
