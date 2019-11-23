@@ -4,63 +4,63 @@ var router = express.Router();
 var carros = [
     {
       id:1, 
-      grupo: 'GRUPO A - ECONÔMICO', 
+      cor: 'Branco', 
       modelo:'Fiat Novo Uno 1.0',
-      valor:'67,27'
+      valor:67.27
     },
     {
       id:2, 
-      grupo: 'GRUPO C - ECONÔMICO COM AR', 
+      cor: 'Branco',
       modelo:'Novo Ford Ka Hatch SE 1.0 ou similar',
-      valor:'69,05'
+      valor:69.05
     },
     {
       id:3, 
-      grupo: 'GRUPO CS - ECONÔMICO SEDAN C/AR', 
+      cor: 'Branco',
       modelo:'GM Prisma 1.0 ou similar',
-      valor:'77,98'
+      valor:77.98
     },
     {
       id:4, 
-      grupo: 'GRUPO F - INTERMEDIÁRIO', 
+      cor: 'Branco', 
       modelo:'Renault Sandero 1.6 ou similar',
-      valor:'77,98'
+      valor:77.98
     },
     {
       id:5, 
-      grupo: 'GRUPO FS - INTERMEDIÁRIO SEDAN', 
+      cor: 'Branco', 
       modelo:'Novo Ford Ka Sedan 1.5 ou similar',
-      valor:'79,77'
+      valor:79.77
     },
     {
       id:6, 
-      grupo: 'GRUPO FX - INTERMEDIÁRIO AUTOMÁTICO', 
+      cor: 'Branco',
       modelo:'Novo Hyundai HB20S 1.6 ou similar',
-      valor:'111,63'
+      valor:111.63
     },
     {
       id:7, 
-      grupo: 'GRUPO GX - SUV AUTOMÁTICO', 
+      cor: 'Branco',
       modelo:'Jeep Renegade Sport 1.8 ou similar',
-      valor:'111,63'
+      valor:111.63
     },
     {
       id:8, 
-      grupo: 'GRUPO LE - SUV ESPECIAL', 
+      cor: 'Branco',
       modelo:'Jeep Compass Longitude',
-      valor:'243,41'
+      valor:243.41
     },
     {
       id:9, 
-      grupo: 'GRUPO GS - SUV SUPER PRIME', 
+      cor: 'Branco',
       modelo:'Volvo XC60 Turbo',
-      valor:'301,98'
+      valor:301.98
     },
     {
       id:10, 
-      grupo: 'GRUPO P - 4X4 ESPECIAL', 
+      cor: 'Branco',
       modelo:'GM S10 2.8 ou similar',
-      valor:'360,73'
+      valor:360.73
     }
 
   ];

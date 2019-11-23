@@ -2,7 +2,6 @@ import { Reserva } from './reserva';
 
 export interface Viagem {
     id:number;
-    id_cliente:number; 
+    idcliente:number; 
     reservas:Reserva[];
-    voos:Reserva[];
 }

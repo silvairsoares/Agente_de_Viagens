@@ -9,7 +9,7 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DemoMaterialModule} from './app/material-module';
 
-import {StepperOverviewExample} from './app/stepper-overview-example';
+import {StepperOverviewExample} from './app/views/stepper-overview-example';
 import {MatAutocompleteModule,MatInputModule} from '@angular/material';
 
 
