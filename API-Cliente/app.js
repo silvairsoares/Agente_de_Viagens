@@ -31,4 +31,48 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+RegistraConsul();
+
+//Registra a API no service Discovery Consul
+function RegistraConsul() {
+  var request = require('request');
+
+  var headers = {
+    'Content-Type': 'text/plain'
+  };
+
+  // Definição do serviço a ser registrado no Consul
+  var dataString = JSON.stringify({
+    "id": "API-Clientes1",
+    "name": "API-Clientes",
+    "tags": [
+      "node.js"
+    ],
+    "address": "http://localhost",
+    "port": 3002,
+    "checks": [
+      {
+        "id": "Checagem da API-Clientes",
+        "http": "http://localhost:3002/clientes/health",
+        "interval": "5s"
+      }
+    ]
+  });
+
+  var options = {
+    url: 'http://localhost:8500/v1/agent/service/register',
+    method: 'PUT',
+    headers: headers,
+    body: dataString
+  };
+
+  function callback(error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log(body);
+    }
+  }
+
+  request(options, callback);
+}
+
 module.exports = app;

@@ -1,10 +1,13 @@
 import { TipoReserva } from '../enum/tipo-reserva.enum';
+import { Cliente } from './cliente';
 
 export interface Reserva {
     id:number;
-    tipo:TipoReserva;
-    id_tipo:number;
+    idcliente:number;    
+    idCarro:number;    
+    idVoo:number;    
+    idHotel:number;    
     valor:number;
-    data_inicio:Date;
-    data_fim:Date;
+    dataInicio:String;
+    dataFim:String;
 }

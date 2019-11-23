@@ -334,6 +334,100 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Consul",
+			"item": [
+				{
+					"name": "Registrando um servico",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\t\t\"id\": \"API-Carros2\",\n\t\t\t\"name\": \"API-Carros\",\n\t\t\t\"tags\": [\n\t\t\t\t\"node.js\"\n\t\t\t],\n\t\t\t\"address\": \"http://localhost\",\n\t\t\t\"port\": 3002,\n\t\t\t\"checks\": [\n\t\t\t\t{\n\t\t\t\t\t\"id\": \"Checagem da API-Carros\",\n\t\t\t\t\t\"http\": \"http://localhost:3002/carros/health\",\n\t\t\t\t\t\"interval\": \"5s\"\n\t\t\t\t}\n\t\t\t]\n}"
+						},
+						"url": {
+							"raw": "localhost:8500/v1/agent/service/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8500",
+							"path": [
+								"v1",
+								"agent",
+								"service",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter instâncias de um serviço",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8500/v1/catalog/service/API-Carros",
+							"host": [
+								"localhost"
+							],
+							"port": "8500",
+							"path": [
+								"v1",
+								"catalog",
+								"service",
+								"API-Carros"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtem a lista de todos os serviços registrados",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8500/v1/catalog/services",
+							"host": [
+								"localhost"
+							],
+							"port": "8500",
+							"path": [
+								"v1",
+								"catalog",
+								"services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleta uma instância de um serviço",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8500/v1/agent/service/deregister/API-Carros1",
+							"host": [
+								"localhost"
+							],
+							"port": "8500",
+							"path": [
+								"v1",
+								"agent",
+								"service",
+								"deregister",
+								"API-Carros1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"protocolProfileBehavior": {}

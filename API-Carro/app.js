@@ -16,12 +16,12 @@ app.use(cookieParser());
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -30,5 +30,49 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+RegistraConsul();
+
+//Registra a API no service Discovery Consul
+function RegistraConsul() {
+  var request = require('request');
+
+  var headers = {
+    'Content-Type': 'text/plain'
+  };
+
+  // Definição do serviço a ser registrado no Consul
+  var dataString = JSON.stringify({
+    "id": "API-Carros1",
+    "name": "API-Carros",
+    "tags": [
+      "node.js"
+    ],
+    "address": "http://localhost",
+    "port": 3001,
+    "checks": [
+      {
+        "id": "Checagem da API-Carros",
+        "http": "http://localhost:3001/carros/health",
+        "interval": "5s"
+      }
+    ]
+  });
+
+  var options = {
+    url: 'http://localhost:8500/v1/agent/service/register',
+    method: 'PUT',
+    headers: headers,
+    body: dataString
+  };
+
+  function callback(error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log(body);
+    }
+  }
+
+  request(options, callback);
+}
 
 module.exports = app;

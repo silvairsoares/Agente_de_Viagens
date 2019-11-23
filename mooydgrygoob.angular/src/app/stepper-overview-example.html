@@ -1,10 +1,10 @@
 <mat-horizontal-stepper #stepper>
   <!-- ////////// RESERVAS ////////// -->
-  <mat-step [stepControl]="primeiroFormGroup">
+  <!-- <mat-step [stepControl]="primeiroFormGroup">
     <form [formGroup]="primeiroFormGroup">
       <ng-template matStepLabel>Reservas</ng-template>
       <mat-form-field class="example-full-width">
-        <input type="text" matInput [formControl]="controlReserva" [matAutocomplete]="autoReserva" placeholder="Busca de Inteligente de Resreva ">
+        <input type="text" matInput formControlName="controlReserva" [matAutocomplete]="autoReserva" placeholder="Busca de Inteligente de Resreva ">
         <mat-autocomplete #autoReserva="matAutocomplete">
           <mat-option *ngFor="let reserva of filteredReserva | async" [value]="reserva.id">
             <span>{{reserva.id}}</span> |
@@ -23,7 +23,41 @@
             <li class="breadcrumb-item active" aria-current="page">Gerenciamento de Reservas</li>
           </ol>
         </nav>
-
+        <div class="card add-car" *ngIf="isEditarReserva">
+          <h5 class="card-header">Adicionar/Atualizar Reserva</h5>
+          <div class="card-body">
+            <form id="add-form" (ngSubmit)="fReserva.form.valid && saveCli(fReserva)" #fReserva="ngForm" novalidate>
+              <div>
+                <label for="nome">Tipo</label>
+                <input matInput type="text" [(ngModel)]="reserva.tipo" id="tipo" name="tipo" #tipo="ngModel" required
+                  class="form-control" [ngClass]="{ 'is-invalid': fReserva.submitted && tipo.invalid }"
+                  placeholder="Digite o nome">
+                <div *ngIf="fReserva.submitted && tipo.invalid" class="invalid-feedback">
+                  <div *ngIf="tipo?.errors.required">Nome é obrigatório</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="endereco">Endereço</label>
+                <input matInput type="text" [(ngModel)]="cliente.endereco" id="endereco" name="endereco"
+                  #color="ngModel" required class="form-control"
+                  [ngClass]="{ 'is-invalid': f.submitted && color.invalid }" placeholder="Digite o endereço">
+                <div *ngIf="fReserva.submitted && color.invalid" class="invalid-feedback">
+                  <div *ngIf="color?.errors.required">Endereço é obrigatória</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="dtNascimento">Data de Nascimento</label>
+                <input matInput type="date" id="dtNascimento" name="dtNascimento" required class="form-control" #dtNascimento="ngModel"
+                [(ngModel)]="cliente.dataNascimento" [ngClass]="{ 'is-invalid': f.submitted && dtNascimento.invalid }" placeholder="Digite a Data de Nascimento">
+                <div *ngIf="fReserva.submitted && dtNascimento.invalid" class="invalid-feedback">
+                  <div *ngIf="dtNascimento?.errors.required">Data de Nascimento é obrigatório</div>
+                </div>
+              </div>
+              <button mat-button type="submit">Salvar</button>
+              <button mat-button type="reset" (click)="cleanForm(fReserva)">Cancelar</button>
+            </form>
+          </div>
+        </div>
         <div class="card list-car">
           <h5 class="card-header">Lista de Reservas</h5>
           <div class="card-body">
@@ -41,10 +75,8 @@
                   <td>{{reserva.tipo}}</td>
                   <td>{{reserva.valor}}</td>
                   <td>
-                    <button type="button" class="btn btn-warning btn-sm ml-1"
-                      (click)="editUser(reserva)">Editar</button>
-                    <button type="button" class="btn btn-danger btn-sm ml-1"
-                      (click)="deleteUser(reserva)">Deletar</button>
+                    <button type="button" class="btn btn-warning btn-sm ml-1" (click)="editReserva(reserva)">Editar</button>
+                    <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteReserva(reserva)">Deletar</button>
                   </td>
                 </tr>
               </tbody>
@@ -53,21 +85,20 @@
         </div>
       </div>
     </form>
-  </mat-step>
+  </mat-step> -->
   <!-- //////////////// Cliente /////////////////////// -->
   <mat-step [stepControl]="segundoFormGroup">
-    <form [formGroup]="segundoFormGroup">
+    <form [formGroup]="segundoFormGroup" >
       <ng-template matStepLabel>Selecione o Cliente</ng-template>
-      <mat-form-field class="example-full-width">
-        <input type="text" matInput [formControl]="controlUser" [matAutocomplete]="autoCli" placeholder="Nome Cliente">
-        <mat-autocomplete #autoCli="matAutocomplete">
-          <mat-option *ngFor="let user of filteredUser | async" [value]="user.nome">
-            {{ user.nome }}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-
-      <input matInput type="text" [(ngModel)]="cliente.nome" id="nome" name="nome">
+        <mat-form-field class="example-full-width">
+          <input type="text" matInput formControlName="controlUser" [matAutocomplete]="autoCli"
+            placeholder="Nome Cliente">
+          <mat-autocomplete #autoCli="matAutocomplete">
+            <mat-option *ngFor="let user of filteredUser | async" [value]="user.nome">
+              <span>{{ user.nome }}</span>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
       <div>
         <button mat-button matStepperNext>Next</button>
         <button mat-button (click)="isEditarCli = !isEditarCli" id="toggle-linear">Novo</button>
@@ -104,8 +135,10 @@
               </div>
               <div class="form-group">
                 <label for="dtNascimento">Data de Nascimento</label>
-                <input matInput type="date" id="dtNascimento" name="dtNascimento" required class="form-control" #dtNascimento="ngModel"
-                [(ngModel)]="cliente.dataNascimento" [ngClass]="{ 'is-invalid': f.submitted && dtNascimento.invalid }" placeholder="Digite a Data de Nascimento">
+                <input matInput type="date" id="dtNascimento" name="dtNascimento" required class="form-control"
+                  #dtNascimento="ngModel" [(ngModel)]="cliente.dataNascimento"
+                  [ngClass]="{ 'is-invalid': f.submitted && dtNascimento.invalid }"
+                  placeholder="Digite a Data de Nascimento">
                 <div *ngIf="f.submitted && dtNascimento.invalid" class="invalid-feedback">
                   <div *ngIf="dtNascimento?.errors.required">Data de Nascimento é obrigatório</div>
                 </div>
@@ -154,7 +187,7 @@
     </form>
   </mat-step>
   <!-- //////////////// CARRO /////////////////////// -->
-  <mat-step [stepControl]="terceiroFormGroup">
+  <!-- <mat-step [stepControl]="terceiroFormGroup">
     <form [formGroup]="terceiroFormGroup">
       <ng-template matStepLabel>Informe o carro desejado</ng-template>
 
@@ -250,9 +283,9 @@
         </div>
       </div>
     </form>
-  </mat-step>
+  </mat-step> -->
   <!-- //////////////// Hotel  /////////////////////// -->
-  <mat-step [stepControl]="quartoFormGroup">
+  <!-- <mat-step [stepControl]="quartoFormGroup">
     <form [formGroup]="quartoFormGroup">
       <ng-template matStepLabel>Qual Hotel ?</ng-template>
 
@@ -349,9 +382,9 @@
         </div>
       </div>
     </form>
-  </mat-step>
+  </mat-step> -->
   <!-- /////////////////////////////////////// -->
-  <mat-step [stepControl]="quintoFormGroup">
+  <!-- <mat-step [stepControl]="quintoFormGroup">
     <form [formGroup]="quintoFormGroup">
       <ng-template matStepLabel>Qual Voo ?</ng-template>
 
@@ -462,9 +495,9 @@
         </div>
       </div>
     </form>
-  </mat-step>
+  </mat-step> -->
   <!-- /////////////////////////////////////// -->
-    <mat-step [stepControl]="sextoFormGroup">
+  <!-- <mat-step [stepControl]="sextoFormGroup">
         <form [formGroup]="sextoFormGroup">
             <ng-template matStepLabel>Quer Pagar como ?</ng-template>
     
@@ -568,7 +601,7 @@
             </div>
           </div>
         </form>
-      </mat-step>
+      </mat-step> -->
 </mat-horizontal-stepper>
 
 

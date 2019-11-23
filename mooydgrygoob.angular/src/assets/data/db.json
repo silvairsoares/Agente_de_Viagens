@@ -21,14 +21,6 @@
   ],
   "clientes": [
     {
-      "id": 2,
-      "nome": "HUMBERTO SANTANA MELO E SILVA",
-      "endereco": "Sem endereco",
-      "data_nascimento": "2019/01/01",
-      "imageUri": "",
-      "dataNascimento": "1988-03-07"
-    },
-    {
       "id": 3,
       "nome": "Flávia Soares Pessoa",
       "endereco": "Niquelândia GO",
@@ -96,8 +88,11 @@
   "reservas": [
     {
       "id": 1,
-      "tipo": "CARRO",
-      "id_tipo": 1,
+      "idcliente": 1,
+      "idCarro": 1,
+      "idVoo": 1,
+      "idHotel": 1,
+      "idTipo": 1,
       "valor": 100,
       "data_inicio": "2019-01-01",
       "data_fim": "2019-01-01"
