@@ -1,4 +1,4 @@
-**Repositório contendo os microserviços para o trabalho final da disciplina "Arquitetura Orientada a Serviços"** do curso **"Especialização em Arquitetura e Engenharia de Software"** da **Faculdade Unialfa**
+**Repositório contendo os microsserviços para o trabalho final da disciplina "Arquitetura Orientada a Serviços"** do curso **"Especialização em Arquitetura e Engenharia de Software"** da **Faculdade Unialfa**
 
 ===========================================================================
 
