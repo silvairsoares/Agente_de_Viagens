@@ -35,7 +35,7 @@ O projeto back-end é composto das seguintes APIs desenvolvidas em Node.JS
 
 **API-Voo** http://localhost:3006/voos
 
-**Todos os microserviços devem ser acessados através da API-Gateway**
+**Todos os microsserviços devem ser acessados através da API-Gateway**
 
 **API-Carro** http://localhost:3000/carros
 
@@ -55,7 +55,7 @@ O projeto back-end é composto das seguintes APIs desenvolvidas em Node.JS
 
 **Para iniciar o back-end execute os seguintes passos:**
 
- - Acesse o diretório de cada um dos microserviços;
+ - Acesse o diretório de cada um dos microsserviços;
  
  - Digite o comando "npm install" (apenas na primeira vez);
  
